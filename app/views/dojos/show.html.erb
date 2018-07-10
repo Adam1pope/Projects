@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Show Dojo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+</head>
+<body>
+
+  <div class="container">
+
+  <h1> <%= @dojo.branch %> Dojo </h1>
+  <h3>Address: <%= @dojo.street %> </h3>
+  <h3>City: <%= @dojo.city%></h3>
+  <h3>State: <%= @dojo.state %> </h3>  
+  <h3><a href="/dojos/<%= @dojo.id %>/edit">Edit Dojo</a></h3>
+  <br>
+  <h3>Student Roster</h3>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+      </tr>
+     </thead>
+
+     <tbody> 
+      <% @students.each do |student| %>
+      <tr>
+        <td><%= student.first_name %></td>
+        <td><%= student.last_name %></td>
+        <td><%= student.email %></td>
+        <td><a class ="btn btn-secondary" href="/dojos/<%= @dojo.id %>/students/<%= student.id %>">Show</a></td>
+        <td><a class ="btn btn-primary" href="/dojos/<%= @dojo.id %>/students/<%= student.id %>/edit">Edit</a></td>
+        <td><a class ="btn btn-outline-danger" href="/dojos/<%= @dojo.id %>/students/<%= student.id %>" data-method="delete">Destroy</a></td>
+      </tr>
+      <% end %>
+
+    </tbody>
+  </table>
+
+<a class="btn btn-secondary" href="/dojos/<%= @dojo.id %>/students/new">Add Student</a>
+<a class="btn btn-secondary" href="/dojos">Home</a>
+  
+
+</body>
+</html>
+
+
+
+

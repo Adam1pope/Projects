@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>New Student</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+</head>
+<body>
+
+  <div class="container">
+    
+    <h3>New Student for <%= @dojo.branch %> </h3>
+
+    <form action="/dojos/<%= @dojo.id%>/students" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <table>
+          <tr>
+              <td align="right">First Name: </td>
+              <td align="left"><input type="text" name="first_name" value=""></td>
+          </tr>
+          <tr>
+              <td align="right">Last Name: </td>
+              <td align="left"><input type="text" name="last_name" value=""></td>
+          </tr>
+          <tr>
+              <td align="right">Email Address: </td>
+              <td align="left"><input type="text" name="email" value=""></td>
+          </tr> 
+        </table>
+     
+          <input type="submit" value="Create">
+
+    </form>
+  </div>
+
+  <a class="btn btn-secondary" href="/dojos/<%= @dojo.id %>"><%= @dojo.branch %></a>
+
+    <div>
+    <% if flash[:errors] %>
+      <% flash[:errors].each do |error| %>
+        <p><%= error %></p>
+      <% end%>
+    <% end %>
+  </div>
+
+</body>
+</html>
+
+
+
